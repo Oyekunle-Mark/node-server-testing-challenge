@@ -28,3 +28,13 @@ describe('creates a footballers', () => {
     });
   });
 });
+
+describe('deletes a footballer', () => {
+  it('Removes a footballer', async () => {
+    await Model.insert({ name: 'Andrea Pirlo', position: 'Midfielder' });
+
+    const id = await Model.remove(1);
+
+    expect(id).toBe(1);
+  });
+});

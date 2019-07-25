@@ -12,7 +12,13 @@ const insert = async ftl => {
   return get(id);
 };
 
+const remove = id =>
+  db('footballers')
+    .where({ id })
+    .del();
+
 module.exports = {
   get,
   insert,
+  remove,
 };
