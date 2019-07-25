@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon index.js",
-    "test": "jest --watch --verbose"
+    "test": "cross-env DB_ENV=testing jest --watch --verbose"
   },
   "jest": {
     "testEnvironment": "node"
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/LambdaSchool/node-server-testing#readme",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
