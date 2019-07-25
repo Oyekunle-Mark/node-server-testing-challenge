@@ -22,10 +22,7 @@ describe('POST /footballers', () => {
       .expect('Content-Type', /json/)
       .expect(201)
       .then(res => {
-        expect(res.body).toEqual({
-          id: 1,
-          name: 'Andrea Pirlo',
-          position: 'Midfielder',
-        });
+        expect(res.body.data.name).toEqual('Andrea Pirlo');
+        expect(res.body.data.position).toEqual('Midfielder');
       }));
 });

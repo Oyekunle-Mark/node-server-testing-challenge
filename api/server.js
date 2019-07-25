@@ -1,6 +1,7 @@
 const express = require('express');
 
 const server = express();
+const footballerRouter = require('../footballers/footballerRoute/route');
 
 server.use(express.json());
 
@@ -10,6 +11,8 @@ server.get('/', (req, res) =>
     message: 'Welcome, Thou faithful developer.',
   }),
 );
+
+server.use('/api', footballerRouter);
 
 server.use((req, res) =>
   res.status(404).json({
