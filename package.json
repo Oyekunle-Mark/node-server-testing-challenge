@@ -5,10 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon index.js",
-    "test": "cross-env DB_ENV=testing jest --watch --verbose"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "test": "cross-env DB_ENV=testing jest --verbose --watch",
+    "coverage": "cross-env DB_ENV=testing jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
