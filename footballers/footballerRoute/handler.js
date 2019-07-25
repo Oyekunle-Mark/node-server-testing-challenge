@@ -18,6 +18,25 @@ const createFootballer = async (req, res) => {
   }
 };
 
+const deleteFootballer = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const ftl = await Model.remove(id);
+
+    res.status(200).json({
+      status: 200,
+      message: `${ftl} footballer deleted.`,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: 'Cannot delete footballer',
+    });
+  }
+};
+
 module.exports = {
   createFootballer,
+  deleteFootballer,
 };

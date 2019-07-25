@@ -26,3 +26,11 @@ describe('POST /footballers', () => {
         expect(res.body.data.position).toEqual('Midfielder');
       }));
 });
+
+describe('DELETE /footballer:id', () => {
+  it('Returns a 200', () =>
+    request(server)
+      .delete('/api/footballers/1')
+      .expect('Content-Type', /json/)
+      .expect(200));
+});
