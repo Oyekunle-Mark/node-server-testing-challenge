@@ -1,8 +1,16 @@
 const db = require('../../database/dbConfig');
 
-const get = () => db('footballers');
+const get = id => {
+  const query = db('footballers');
 
-const insert = ftl => db('footballers').insert(ftl);
+  return id ? query.where({ id }).first() : query;
+};
+
+const insert = async ftl => {
+  const [id] = await db('footballers').insert(ftl);
+
+  return get(id);
+};
 
 module.exports = {
   get,

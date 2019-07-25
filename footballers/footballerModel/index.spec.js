@@ -5,8 +5,8 @@ beforeEach(async () => {
   await db('footballers').truncate();
 });
 
-describe('gets all the footballers', () => {
-  it('returns an array', async () => {
+describe('creates a footballers', () => {
+  it('successfully create footballer', async () => {
     await Model.insert({ name: 'Andrea Pirlo', position: 'Midfielder' });
 
     const footballers = await Model.get();
@@ -15,12 +15,16 @@ describe('gets all the footballers', () => {
     expect(footballers).toHaveLength(1);
   });
 
-  it('returns all the footballers in the table', async () => {
-    await Model.insert({ name: 'Andrea Pirlo', position: 'Midfielder' });
-    await Model.insert({ name: 'Andrea Pirlo', position: 'Midfielder' });
+  it('returns the new created footballer', async () => {
+    const footballers = await Model.insert({
+      name: 'Andrea Pirlo',
+      position: 'Midfielder',
+    });
 
-    const footballers = await Model.get();
-
-    expect(footballers).toHaveLength(2);
+    expect(footballers).toEqual({
+      id: 1,
+      name: 'Andrea Pirlo',
+      position: 'Midfielder',
+    });
   });
 });
